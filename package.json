@@ -2,11 +2,14 @@
   "name": "blockchain-example",
   "version": "1.0.0",
   "description": "Playaround with blockchain in Javascript / node.js",
-  "main": "index.js",
+  "main": "./server/server.ts",
   "scripts": {
     "watch": "webpack --watch",
     "start": "webpack-dev-server --watch --open",
-    "build": "webpack --mode=production"
+    "build": "webpack --mode=production",
+    "server:build": "tsc --build tsconfig-server.json",
+    "server:ts": "tsc  --build tsconfig-server.json --watch",
+    "server:run": "node ./server/dist/server.js"
   },
   "repository": {
     "type": "git",

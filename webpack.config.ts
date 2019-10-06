@@ -3,10 +3,9 @@ import path from 'path';
 import webpack from 'webpack';
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-
 const config: webpack.Configuration = {
   mode: 'development',
-  entry: './src/server.ts',
+  entry: './src/client.ts',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
