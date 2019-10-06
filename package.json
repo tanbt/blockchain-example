@@ -1,0 +1,29 @@
+{
+  "name": "blockchain-example",
+  "version": "1.0.0",
+  "description": "Playaround with blockchain in Javascript / node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tanbt/blockchain-example.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tanbt/blockchain-example/issues"
+  },
+  "homepage": "https://github.com/tanbt/blockchain-example#readme",
+  "devDependencies": {
+    "@types/node": "^12.7.11",
+    "@types/webpack": "^4.39.2",
+    "@types/webpack-dev-server": "^3.1.7",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.3",
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9"
+  }
+}
