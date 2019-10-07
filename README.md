@@ -13,6 +13,7 @@ Client and Server should be run in different terminals.
 ### Server
 * Build server: `npm run server:ts`
 * Run server: `npm run server:run` or press F5 in VSCode
+* Run unit test for server: `npm run server:test`
 
 ## Debugging
 

@@ -13,6 +13,16 @@ export class Block {
     `
   }
 
+  get data(): String {
+    return this._data;
+  }
+  get prevHash(): String {
+    return this._prevHash;
+  }
+  get hash(): String {
+    return this._hash;
+  }
+
   /**
    * Generate the first block of a chain
    */
