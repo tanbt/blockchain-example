@@ -4,7 +4,7 @@ Playaround with blockchain in Javascript / node.js
 ## Installation
 * npm i
 
-## Run
+## Development run
 Client and Server should be run in different terminals.
 
 ### Client
@@ -12,8 +12,7 @@ Client and Server should be run in different terminals.
 
 ### Server
 * Build server: `npm run server:ts`
-* Run server: `npm run server:run` or press F5
-* `node .\server\dist\server.js` or just **F5** in VSCode
+* Run server: `npm run server:run` or press F5 in VSCode
 
 ## Debugging
 
