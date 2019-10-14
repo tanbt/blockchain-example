@@ -11,6 +11,16 @@
       "program": "${workspaceFolder}\\server\\server.ts",
       // "preLaunchTask": "tsc: build - tsconfig-server.json",
       "outFiles": ["${workspaceFolder}/server/dist/server.js"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Server Test",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run-script",
+        "server:test"
+      ],
     }
   ]
 }

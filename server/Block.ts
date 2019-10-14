@@ -2,7 +2,7 @@ const SHA256 = require('crypto-js/sha256');
 
 export class Block {
   constructor(private _timestamp: number, private _prevHash: String,
-    private _hash: String, private _data: String) {}
+    private _hash: String, private _data: String) { }
 
   public toString() {
     return `Block -
@@ -13,6 +13,9 @@ export class Block {
     `
   }
 
+  get timeStamp(): number {
+    return this._timestamp;
+  }
   get data(): String {
     return this._data;
   }
@@ -23,11 +26,15 @@ export class Block {
     return this._hash;
   }
 
+  set data(dt: String) {
+    this._data = dt;
+  }
+
   /**
    * Generate the first block of a chain
    */
   static genesis(): Block {
-    return new this(Date.now(), null, "My initial hash", null);
+    return new this(-1, null, "My initial hash", null);
   }
 
   static mineBlock(lastBlock: Block, data: String): Block {
@@ -36,7 +43,12 @@ export class Block {
     return new this(timestamp, lastBlock._hash, hash, data);
   }
 
-  static hash(timestamp: number, lastHash: String, data: String): String {
-    return SHA256(`${timestamp}${lastHash}${data}`).toString();
+  static hash(timestamp: number, prevHash: String, data: String): String {
+    return SHA256(`${timestamp}${prevHash}${data}`).toString();
+  }
+
+  static blockHash(block: Block): String {
+    const { _timestamp, _prevHash, _data } = block;
+    return Block.hash(_timestamp, _prevHash, _data);
   }
 }

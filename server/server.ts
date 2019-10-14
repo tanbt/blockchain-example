@@ -5,3 +5,5 @@ const block2 = Block.mineBlock(block1, "this is block 2 data");
 
 console.log(block1);
 console.log(block2);
+
+setTimeout(() => console.log('timed out'), 2000);

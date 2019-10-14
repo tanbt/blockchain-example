@@ -13,6 +13,10 @@ export class Blockchain {
     return this._chain.length;
   }
 
+  get chain(): Array<Block> {
+    return this._chain;
+  }
+
   addBlock(data: String): Block {
     const lastBlock = this._chain[this._chain.length - 1];
     const block = Block.mineBlock(lastBlock, data);
@@ -20,8 +24,23 @@ export class Blockchain {
     return block;
   }
 
-  public getBlockByIndex(index: number): Block {
-    return this._chain[index];
+  public isValidChain(chain: Blockchain): Boolean {
+    if (JSON.stringify(chain.chain[0]) !== JSON.stringify(Block.genesis())) {
+      return false;
+    }
+
+    for (let i = 1; i < chain.length; i++) {
+      const block = chain.chain[i];
+      const prevBlock = chain.chain[i - 1];
+
+      if (block.prevHash !== prevBlock.hash ||
+          block.hash !== Block.blockHash(block)
+        ) {
+        return false;
+      }
+    }
+
+    return true;
   }
 
 }

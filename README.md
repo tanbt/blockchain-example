@@ -29,3 +29,4 @@ Set a breakpoint in `./server/*.ts`. In VScode press F5.
 ## References
 * [Webpack typescript](https://webpack.js.org/configuration/configuration-languages/#typescript)
 * [VSCode TS debugging](https://code.visualstudio.com/docs/typescript/typescript-debugging)
+* [VSCode configure shortcut key for selecting debug](https://stackoverflow.com/a/48650929/2560343)
