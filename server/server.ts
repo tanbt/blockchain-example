@@ -3,6 +3,7 @@ const cors = require("cors");
 
 import { Blockchain } from "./Blockchain";
 import { Response, Request } from "express";
+import { Block } from "./Block";
 
 const bc: Blockchain = new Blockchain();
 
@@ -12,10 +13,26 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// http://localhost:9000/api/v1/blocks
+/**
+ * GET  http://localhost:9000/api/v1/blocks
+ */
 app.route("/api/v1/blocks").get((req: Request, res: Response) => {
   return res.json(bc.chain);
 });
+
+/**
+POST http://localhost:9000/api/v1/blocks/mine
+  Host: localhost:9000
+  Content-Type: application/json
+  Host: localhost:9000
+
+  {"data": "new block data"}
+ */
+app.route("/api/v1/blocks/mine").post((req: Request, res: Response) => {
+  const block = bc.addBlock(req.body.data);
+  console.log(`New block added: ${block}`);
+  return res.redirect('/api/v1/blocks');
+})
 
 //  SETUP EXPRESS SERVER
 const HTTP_HOST = process.env.HOST || "localhost";
