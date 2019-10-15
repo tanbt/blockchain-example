@@ -1,9 +1,26 @@
-import { Block } from "./Block";
+const express = require('express');
+const cors = require("cors");
 
-const block1 = Block.genesis();
-const block2 = Block.mineBlock(block1, "this is block 2 data");
+import { Blockchain } from "./Blockchain";
+import { Response, Request } from "express";
 
-console.log(block1);
-console.log(block2);
+const bc: Blockchain = new Blockchain();
 
-setTimeout(() => console.log('timed out'), 2000);
+//  SETUP EXPRESS APP
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+
+// http://localhost:9000/api/v1/blocks
+app.route("/api/v1/blocks").get((req: Request, res: Response) => {
+  return res.json(bc.chain);
+});
+
+//  SETUP EXPRESS SERVER
+const HTTP_HOST = process.env.HOST || "localhost";
+const HTTP_PORT = process.env.HTTP_PORT || 9000;
+
+app.listen(HTTP_PORT, () => {
+  console.log(`HTTPS Server started at http://${HTTP_HOST}:${HTTP_PORT}`);
+});
