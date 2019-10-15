@@ -36,4 +36,18 @@ describe("blockchain", () => {
     bc2.chain[1].data = "not foo"
     expect(bc.isValidChain(bc2)).toBe(false);
   });
+
+  it("replace a valid chain", () => {
+    bc2.addBlock("foo");
+    bc.replaceChain(bc2);
+    expect(bc.chain[1].data).toBe("foo");
+  });
+
+  it("replace by a shorter chain", () => {
+    bc.addBlock("foo");
+    bc.replaceChain(bc2);
+    expect(bc2.length).toBe(1);
+    expect(bc.length).toBe(2);
+    expect(bc.chain[1].data).toBe("foo");
+  })
 })
